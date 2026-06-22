@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chronos Shards (CHRONO) | Hacash Stack Protocol</title>
+  <!-- Tailwind CSS v4 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Google Fonts: Outfit & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0B0F19;
+      --card-bg: #121826;
+      --border-color: #1F293D;
+      --text-main: #F9FAFB;
+      --text-muted: #9CA3AF;
+      --accent-cyan: #06B6D4;
+      --accent-emerald: #10B981;
+      --accent-gold: #F59E0B;
+    }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    /* Custom layout border settings */
+    .crypto-border {
+      border: 1px solid var(--border-color);
+    }
+    .crypto-focus:focus {
+      outline: none;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 1px var(--accent-cyan);
+    }
+    /* Style scrollbar for terminal */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #0f131f;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #1F293D;
+      border-radius: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #374151;
+    }
+    /* Sliders Styling styling custom hover indicators */
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: #1F293D;
+      height: 6px;
+      border-radius: 3px;
+      outline: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      cursor: pointer;
+      border: 2px solid #0B0F19;
+      transition: background-color 0.15s ease-in-out;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      background: var(--accent-emerald);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#0B0F19] text-[#F9FAFB] flex flex-col justify-between selection:bg-cyan-500/20 selection:text-cyan-300 antialiased">
+
+  <!-- Status Bar Navigation -->
+  <header class="w-full border-b border-[#1F293D] bg-[#121826]/70 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <!-- Geometric SVG Shard Logo -->
+        <svg class="w-8 h-8 text-[#06B6D4]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 5L90 45L50 85L10 45L50 5Z" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
+          <path d="M50 25L70 45L50 65L30 45L50 25Z" fill="currentColor" opacity="0.3"/>
+          <line x1="50" y1="5" x2="50" y2="85" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/>
+          <line x1="10" y1="45" x2="90" y2="45" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/>
+        </svg>
+        <div>
+          <span class="text-lg font-bold tracking-wider text-white">CHRONO</span>
+          <span class="text-xs block font-mono text-[#9CA3AF] tracking-widest uppercase">Hacash Stack Layer</span>
+        </div>
+      </div>
+      
+      <!-- Ledger Status -->
+      <div class="flex items-center gap-2 border border-[#1F293D] bg-[#0B0F19] px-3 py-1.5 rounded-md">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+        </span>
+        <span class="text-[11px] font-mono text-[#F59E0B] tracking-wider uppercase">PROTOCOL ACTIVE // PoW LAYER</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="max-w-6xl w-full mx-auto px-4 py-12 space-y-16 flex-grow">
+
+    <!-- Section 1: Hero Header -->
+    <section class="text-center space-y-6 max-w-3xl mx-auto">
+      <div class="inline-block border border-[#1F293D] bg-[#121826] px-4 py-1 rounded-full text-xs font-mono text-[#06B6D4] tracking-widest uppercase">
+        PoW-Native Asset Schema
+      </div>
+      <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white uppercase">
+        Chronos Shards <span class="text-[#06B6D4] font-mono font-light">(CHRONO)</span>
+      </h1>
+      <p class="text-lg md:text-xl text-[#9CA3AF] tracking-wide font-light">
+        Formed by Energy. Measured by Time.
+      </p>
+
+      <!-- Narrative Accent Block -->
+      <div class="relative mt-8 p-6 bg-[#121826] border-l-4 border-[#F59E0B] crypto-border rounded-r-lg shadow-xl text-left">
+        <div class="absolute top-2 right-3 text-[10px] font-mono text-[#374151] select-none">// DOCTRINE META_1</div>
+        <blockquote class="italic text-slate-200 md:text-lg leading-relaxed">
+          "Bitcoin proved PoW for money. HACD brings PoW to assets. Chronos Shards are formed, not merely deployed."
+        </blockquote>
+        <div class="mt-4 flex items-center justify-between text-xs text-[#9CA3AF] font-mono">
+          <span>— HACD Stack Protocol Architecture Document</span>
+          <span class="text-amber-500 opacity-80 font-bold">Genesis Scarcity Matrix</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: The Core Mechanism Explainer -->
+    <section class="space-y-8">
+      <div class="border-b border-[#1F293D] pb-3">
+        <h2 class="text-xl font-bold tracking-wider uppercase text-white flex items-center gap-2">
+          <span class="text-[#06B6D4]">//</span> The Formation Mechanism
+        </h2>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Box 1 -->
+        <div class="bg-[#121826] crypto-border p-6 rounded-lg relative flex flex-col justify-between hover:border-[#374151] transition-all">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-amber-500 font-bold uppercase tracking-wider">Container Protocol</span>
+              <!-- Diamond SVG -->
+              <svg class="w-6 h-6 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 3h12l4 6-10 12L2 9z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white">1. The PoW Container (HACD)</h3>
+            <p class="text-sm text-[#9CA3AF] leading-relaxed">
+              Users must commit an existing, scarce HACD unit (Proof-of-Work Diamond) as the cryptographic vault. The diamond acts as a scarce raw material container, ensuring the protocol borrows real computational history.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[#1F293D] text-xs font-mono text-[#6B7280]">
+            Input requirement: <span class="text-white font-bold">1 HACD / Lot</span>
+          </div>
+        </div>
+
+        <!-- Box 2 -->
+        <div class="bg-[#121826] crypto-border p-6 rounded-lg relative flex flex-col justify-between hover:border-[#374151] transition-all">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-cyan-500 font-bold uppercase tracking-wider">Capital expenditure</span>
+              <!-- Energy Bolt SVG -->
+              <svg class="w-6 h-6 text-cyan-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white">2. The Energy Input (HAC)</h3>
+            <p class="text-sm text-[#9CA3AF] leading-relaxed">
+              A stack cost of <span class="font-mono text-cyan-400 font-semibold">50 HAC</span> must be committed per lot. This acts as a permanent protocol capital input. Committing HAC binds economic value directly to the asset, creating an unforgeable production cost.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[#1F293D] text-xs font-mono text-[#6B7280]">
+            Burn parameters: <span class="text-white font-bold">Sink Accumulation</span>
+          </div>
+        </div>
+
+        <!-- Box 3 -->
+        <div class="bg-[#121826] crypto-border p-6 rounded-lg relative flex flex-col justify-between hover:border-[#374151] transition-all">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-emerald-500 font-bold uppercase tracking-wider">Asset Extraction</span>
+              <!-- Sparkles/Extract SVG -->
+              <svg class="w-6 h-6 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white">3. The Asset State (CHRONO)</h3>
+            <p class="text-sm text-[#9CA3AF] leading-relaxed">
+              21,000 CHRONO are extracted and formed per lot, permanently binding the historical genesis metadata of the underlying HACD unit to the blockchain ledger. Once written, the relationship is cryptographic and immutable.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[#1F293D] text-xs font-mono text-[#6B7280]">
+            Mint outcome: <span class="text-white font-bold">21,000 Shards / Lot</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3 & 4: Modeler & Individual Calculator -->
+    <section class="space-y-8">
+      <div class="border-b border-[#1F293D] pb-3">
+        <h2 class="text-xl font-bold tracking-wider uppercase text-white flex items-center gap-2">
+          <span class="text-[#06B6D4]">//</span> Tokenomics Modeler & Simulator
+        </h2>
+      </div>
+
+      <!-- Two Column Modeler Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Left Side: Inputs -->
+        <div class="lg:col-span-6 space-y-6 bg-[#121826] crypto-border p-6 rounded-lg">
+          <div class="flex items-center justify-between pb-3 border-b border-[#1F293D]">
+            <h3 class="text-sm font-mono uppercase tracking-wider text-slate-400">Simulation Variables</h3>
+            <span class="text-[10px] font-mono text-[#6B7280]">INPUT_MATRIX_v1.0</span>
+          </div>
+
+          <!-- Variable 1 -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between text-xs font-mono">
+              <label for="lots-slider" class="text-slate-300 font-bold uppercase">Total HACD Lots Available</label>
+              <div class="flex items-center gap-2">
+                <input type="number" id="lots-input" min="100" max="5000" step="50" value="1000"
+                  class="w-20 bg-[#0B0F19] crypto-border crypto-focus px-2 py-1 text-right text-emerald-400 rounded font-mono text-sm">
+                <span class="text-slate-500">LOTS</span>
+              </div>
+            </div>
+            <input type="range" id="lots-slider" min="100" max="5000" step="50" value="1000" class="w-full cursor-pointer">
+            <div class="flex justify-between text-[10px] font-mono text-[#4B5563]">
+              <span>100 Lots</span>
+              <span>5,000 Lots</span>
+            </div>
+          </div>
+
+          <!-- Variable 2 -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between text-xs font-mono">
+              <label for="tokens-slider" class="text-slate-300 font-bold uppercase">Tokens Issued Per Lot</label>
+              <div class="flex items-center gap-2">
+                <input type="number" id="tokens-input" min="1000" max="100000" step="500" value="21000"
+                  class="w-24 bg-[#0B0F19] crypto-border crypto-focus px-2 py-1 text-right text-emerald-400 rounded font-mono text-sm">
+                <span class="text-slate-500">CHRONO</span>
+              </div>
+            </div>
+            <input type="range" id="tokens-slider" min="1000" max="100000" step="500" value="21000" class="w-full cursor-pointer">
+            <div class="flex justify-between text-[10px] font-mono text-[#4B5563]">
+              <span>1,000 Shards</span>
+              <span>100,000 Shards</span>
+            </div>
+          </div>
+
+          <!-- Variable 3 -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between text-xs font-mono">
+              <label for="cost-slider" class="text-slate-300 font-bold uppercase">Stack Cost per Lot in HAC</label>
+              <div class="flex items-center gap-2">
+                <input type="number" id="cost-input" min="5" max="200" step="5" value="50"
+                  class="w-20 bg-[#0B0F19] crypto-border crypto-focus px-2 py-1 text-right text-emerald-400 rounded font-mono text-sm">
+                <span class="text-slate-500">HAC</span>
+              </div>
+            </div>
+            <input type="range" id="cost-slider" min="5" max="200" step="5" value="50" class="w-full cursor-pointer">
+            <div class="flex justify-between text-[10px] font-mono text-[#4B5563]">
+              <span>5 HAC</span>
+              <span>200 HAC</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Live Global Readouts -->
+        <div class="lg:col-span-6 flex flex-col justify-between gap-6">
+          <!-- Card 1: Total Supply -->
+          <div class="bg-[#121826] crypto-border p-6 rounded-lg relative overflow-hidden flex flex-col justify-between flex-1">
+            <div class="absolute top-2 right-3 text-[9px] font-mono text-slate-500">[ Lots &times; Tokens/Lot ]</div>
+            <div>
+              <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Total Circulating Supply</h4>
+              <div class="text-3xl md:text-4xl font-mono font-bold text-cyan-400 tracking-tight" id="readout-supply">
+                21,000,000
+              </div>
+            </div>
+            <div class="text-xs text-[#9CA3AF] mt-3 flex justify-between items-center font-mono">
+              <span>Status: Scarcity Hardcoded</span>
+              <span class="text-cyan-500">CHRONO</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Total HAC Burn Sink -->
+          <div class="bg-[#121826] crypto-border p-6 rounded-lg relative overflow-hidden flex flex-col justify-between flex-1">
+            <div class="absolute top-2 right-3 text-[9px] font-mono text-slate-500">[ Lots &times; Stack Cost ]</div>
+            <div>
+              <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Total Protocol HAC Sink Volume</h4>
+              <div class="text-3xl md:text-4xl font-mono font-bold text-amber-500 tracking-tight" id="readout-sink">
+                50,000 HAC
+              </div>
+            </div>
+            <!-- Dynamic progress gauge visualizer -->
+            <div class="mt-4 space-y-1">
+              <div class="w-full bg-[#0B0F19] rounded-full h-1.5 overflow-hidden border border-[#1F293D]">
+                <div class="bg-amber-500 h-full transition-all duration-300" id="readout-sink-gauge" style="width: 25%"></div>
+              </div>
+              <div class="flex justify-between text-[10px] font-mono text-[#6B7280]">
+                <span>Sink Cap: 1M HAC</span>
+                <span id="readout-sink-percent">5.0% Lockup</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Cost basis per lot -->
+          <div class="bg-[#121826] crypto-border p-5 rounded-lg relative overflow-hidden flex flex-col justify-between">
+            <div class="absolute top-2 right-3 text-[9px] font-mono text-slate-500">[ Cost/Lot Formula ]</div>
+            <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">On-Chain Production Cost Basis Per Lot</h4>
+            <div class="text-sm font-mono text-slate-200 bg-[#0B0F19] p-3 rounded border border-[#1F293D] flex items-center justify-between" id="readout-cost-basis">
+              <span>1 HACD + 50 HAC + Net Fees</span>
+              <span class="text-xs text-amber-500 uppercase tracking-widest text-[10px]">// FIXED SCARCITY</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Section 4: Individual Formation Calculator & Inscription Receipt Terminal -->
+      <div class="bg-[#121826] crypto-border rounded-lg overflow-hidden mt-8">
+        <div class="p-6 border-b border-[#1F293D] flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h3 class="text-lg font-bold text-white uppercase tracking-wider">Individual Formation Calculator</h3>
+            <p class="text-xs text-[#9CA3AF]">Calculate your specific commitment structure based on container availability.</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="flex flex-col">
+              <label for="user-hacd-input" class="text-[10px] font-mono text-[#6B7280] uppercase">HACD Containers Owned</label>
+              <input type="number" id="user-hacd-input" min="1" max="1000" value="1"
+                class="w-28 bg-[#0B0F19] crypto-border crypto-focus px-3 py-2 text-center text-amber-400 rounded-md font-mono text-base font-bold">
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12">
+          <!-- Live outputs for the individual user -->
+          <div class="p-6 md:col-span-5 bg-[#121826] flex flex-col justify-between gap-6 border-b md:border-b-0 md:border-r border-[#1F293D]">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs uppercase tracking-wider font-mono text-slate-400">You Spend (Inputs)</span>
+                <span class="text-[9px] font-mono text-amber-500">// LOCKS ECONOMIC INPUT</span>
+              </div>
+              <div class="space-y-2">
+                <div class="bg-[#0B0F19] p-3 rounded crypto-border flex items-center justify-between">
+                  <span class="text-xs font-mono text-slate-400">PoW Containers</span>
+                  <span class="text-base font-mono font-bold text-white" id="calc-spend-hacd">1 HACD</span>
+                </div>
+                <div class="bg-[#0B0F19] p-3 rounded crypto-border flex items-center justify-between">
+                  <span class="text-xs font-mono text-slate-400">Permanent Burn Sink</span>
+                  <span class="text-base font-mono font-bold text-cyan-400" id="calc-spend-hac">50 HAC</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs uppercase tracking-wider font-mono text-slate-400">You Receive (Formation)</span>
+                <span class="text-[9px] font-mono text-emerald-500">// EXTRACTED STATE</span>
+              </div>
+              <div class="bg-[#0B0F19] p-3 rounded crypto-border border-emerald-500/20 flex items-center justify-between">
+                <span class="text-xs font-mono text-slate-400">Chronos Shards</span>
+                <span class="text-base font-mono font-bold text-emerald-400" id="calc-receive-chrono">21,000 CHRONO</span>
+              </div>
+            </div>
+
+            <button id="simulate-btn" class="w-full bg-[#06B6D4] hover:bg-[#0891B2] text-slate-900 font-bold uppercase text-xs py-3.5 px-4 rounded-md tracking-widest transition-all cursor-pointer shadow-lg active:scale-[0.98] border border-cyan-300/30 flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+              </svg>
+              Simulate Asset Formation
+            </button>
+          </div>
+
+          <!-- Monospace Terminal Log Component -->
+          <div class="p-6 md:col-span-7 bg-[#0b0e17] flex flex-col justify-between min-h-[300px]">
+            <div class="flex items-center justify-between pb-3 border-b border-[#1F293D] mb-4">
+              <span class="text-xs font-mono text-cyan-500 uppercase tracking-widest flex items-center gap-1.5">
+                <span class="inline-block w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></span>
+                Ledger Terminal simulator
+              </span>
+              <span class="text-[10px] font-mono text-[#374151]">STDOUT // CHRONO_INSCRIPTION</span>
+            </div>
+            
+            <div id="terminal-content" class="flex-grow font-mono text-xs text-[#9CA3AF] space-y-2 overflow-y-auto max-h-[220px] custom-scrollbar">
+              <div class="text-[#4B5563] italic">// System idle. Ready for simulation...</div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-[#1F293D] flex items-center justify-between text-[10px] font-mono text-[#374151]">
+              <span>NODE_IP: 127.0.0.1:8710</span>
+              <span>EST_GAS: 0.002 HAC</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Section 5: Risk Disclosure & Protocol Status Footer -->
+    <section class="bg-[#121826]/40 crypto-border p-6 rounded-lg space-y-4 max-w-4xl mx-auto">
+      <div class="flex items-center gap-2 border-b border-[#1F293D] pb-3 text-[#F59E0B]">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <span class="text-xs font-mono font-bold uppercase tracking-wider">Protocol Safety Matrix & Disclaimers</span>
+      </div>
+      <p class="text-xs text-[#9CA3AF] leading-relaxed text-justify">
+        Risk Disclosure: Participation in the HACD Stack process involves native ledger fees, permanent asset actions, and exposure to experimental cryptographic systems. This model represents a simulation of on-chain production parameters and does not constitute financial advice, market guarantees, or secondary valuation promises. Launch parameters must be verified by HACD Labs before deployment.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Sticky/Static Footer -->
+  <footer class="w-full border-t border-[#1F293D] bg-[#0c101b] py-6 mt-12 text-center text-xs font-mono text-[#4B5563]">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div>
+        <span>&copy; 2026 Chronos Shards (CHRONO) Protocol.</span>
+      </div>
+      <div class="flex items-center gap-4 text-[#9CA3AF]">
+        <a href="#" class="hover:text-white transition-colors">Documentation</a>
+        <span>&bull;</span>
+        <a href="#" class="hover:text-white transition-colors">Hacash Explorer</a>
+        <span>&bull;</span>
+        <a href="#" class="hover:text-white transition-colors">HACD Specs</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Web Script -->
+  <script>
+    // Elements DOM Reference
+    const lotsSlider = document.getElementById('lots-slider');
+    const lotsInput = document.getElementById('lots-input');
+    const tokensSlider = document.getElementById('tokens-slider');
+    const tokensInput = document.getElementById('tokens-input');
+    const costSlider = document.getElementById('cost-slider');
+    const costInput = document.getElementById('cost-input');
+
+    const readoutSupply = document.getElementById('readout-supply');
+    const readoutSink = document.getElementById('readout-sink');
+    const readoutSinkGauge = document.getElementById('readout-sink-gauge');
+    const readoutSinkPercent = document.getElementById('readout-sink-percent');
+    const readoutCostBasis = document.getElementById('readout-cost-basis');
+
+    const userHacdInput = document.getElementById('user-hacd-input');
+    const calcSpendHacd = document.getElementById('calc-spend-hacd');
+    const calcSpendHac = document.getElementById('calc-spend-hac');
+    const calcReceiveChrono = document.getElementById('calc-receive-chrono');
+
+    const simulateBtn = document.getElementById('simulate-btn');
+    const terminalContent = document.getElementById('terminal-content');
+
+    // Numbers formatter
+    function formatNumber(num) {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    // Sync input sliders and textboxes
+    function setupSync(slider, input, callback) {
+      slider.addEventListener('input', (e) => {
+        input.value = e.target.value;
+        callback();
+      });
+      input.addEventListener('change', (e) => {
+        let val = parseInt(e.target.value);
+        const min = parseInt(input.min);
+        const max = parseInt(input.max);
+        
+        if (isNaN(val)) val = min;
+        if (val < min) val = min;
+        if (val > max) val = max;
+        
+        input.value = val;
+        slider.value = val;
+        callback();
+      });
+    }
+
+    // Calculate core variables
+    function updateCalculations() {
+      const lots = parseInt(lotsInput.value);
+      const tokensPerLot = parseInt(tokensInput.value);
+      const costPerLot = parseInt(costInput.value);
+      const userHacd = parseInt(userHacdInput.value);
+
+      // Calculations
+      const totalCirculatingSupply = lots * tokensPerLot;
+      const totalSinkVolume = lots * costPerLot;
+      
+      // Update global readouts
+      readoutSupply.textContent = formatNumber(totalCirculatingSupply);
+      readoutSink.textContent = `${formatNumber(totalSinkVolume)} HAC`;
+
+      // Update sink visual gauge (Let's scale relative to a 1,000,000 max capacity)
+      const maxSinkCap = 1000000;
+      const percentage = Math.min((totalSinkVolume / maxSinkCap) * 100, 100);
+      readoutSinkGauge.style.width = `${percentage}%`;
+      readoutSinkPercent.textContent = `${percentage.toFixed(2)}% Lockup`;
+
+      // Update Cost Basis Text
+      readoutCostBasis.innerHTML = `
+        <span>1 HACD + <span class="text-cyan-400 font-bold">${costPerLot} HAC</span> + Network Fees</span>
+        <span class="text-[10px] text-amber-500 uppercase tracking-widest font-mono">// EST. SCARCITY VALUE</span>
+      `;
+
+      // Update Individual Calculator outputs
+      calcSpendHacd.textContent = `${userHacd} HACD`;
+      calcSpendHac.textContent = `${formatNumber(userHacd * costPerLot)} HAC`;
+      calcReceiveChrono.textContent = `${formatNumber(userHacd * tokensPerLot)} CHRONO`;
+    }
+
+    // Bind event listeners for sliders/inputs
+    setupSync(lotsSlider, lotsInput, updateCalculations);
+    setupSync(tokensSlider, tokensInput, updateCalculations);
+    setupSync(costSlider, costInput, updateCalculations);
+
+    // Watch individual calculator text box
+    userHacdInput.addEventListener('change', (e) => {
+      let val = parseInt(e.target.value);
+      if (isNaN(val) || val < 1) val = 1;
+      if (val > 1000) val = 1000;
+      userHacdInput.value = val;
+      updateCalculations();
+    });
+    userHacdInput.addEventListener('input', () => {
+      let val = parseInt(userHacdInput.value);
+      if (!isNaN(val)) {
+        updateCalculations();
+      }
+    });
+
+    // Inscription Receipt Terminal Simulation
+    let simulationActive = false;
+
+    simulateBtn.addEventListener('click', () => {
+      if (simulationActive) return;
+      simulationActive = true;
+      simulateBtn.disabled = true;
+      simulateBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+      const userHacd = parseInt(userHacdInput.value);
+      const costPerLot = parseInt(costInput.value);
+      const tokensPerLot = parseInt(tokensInput.value);
+
+      const totalHacSpent = userHacd * costPerLot;
+      const totalChronoReceived = userHacd * tokensPerLot;
+
+      terminalContent.innerHTML = '';
+      
+      const logs = [
+        { text: `[15:47:10] INITIALIZING INSCRIPTION PROTOCOL (CHRONO_EXTRACT)...`, color: 'text-slate-400' },
+        { text: `[15:47:11] CONNECTING TO HACASH MAINNET NODE (RPC: https://node.hacash.org)...`, color: 'text-slate-400' },
+        { text: `[15:47:11] STATUS: Connected. Sync height: 829,190`, color: 'text-emerald-500' },
+        { text: `[15:47:12] VERIFYING UTXO CONTAINER SCARCITY...`, color: 'text-slate-400' },
+        { text: `[15:47:12] FOUND ${userHacd} ACTIVE HACD Proof-of-Work Diamond Container(s)`, color: 'text-amber-400' },
+        { text: `[15:47:13] METADATA READ: Genesis Diamond identifier sequence verified.`, color: 'text-slate-400' },
+        { text: `[15:47:13] PREPARING TO COMMIT BURN TRANSCRIPT FOR CAPITAL SINK...`, color: 'text-slate-400' },
+        { text: `[15:47:14] TRANSFERRING ${formatNumber(totalHacSpent)} HAC TO PERMANENT SINK PROTOCOL`, color: 'text-cyan-400 font-bold' },
+        { text: `[15:47:14] BURNING... (TxProof: generated locally)`, color: 'text-slate-400' },
+        { text: `[15:47:15] BROADCASTING COMPOSITE TRANSACTION STATE BLOCK...`, color: 'text-slate-400' },
+        { text: `[15:47:15] BROADCAST STATUS: PENDING INCLUSION IN NEXT BLOCK...`, color: 'text-amber-500 animate-pulse' },
+        { text: `[15:47:16] SUCCESS: INCLUDED IN BLOCK #829,191`, color: 'text-emerald-500 font-bold' },
+        { text: `[15:47:16] FORMED: ${formatNumber(totalChronoReceived)} CHRONO shards generated and bound.`, color: 'text-emerald-400 font-bold' },
+        { text: `[15:47:16] TRANSACTION HASH: 0x${generateTxHash()}`, color: 'text-slate-500' },
+        { text: `[15:47:16] LEDGER ENTITY SHARDS EXTRACTION COMPLETED SUCCESSFULLY.`, color: 'text-emerald-500 font-bold' }
+      ];
+
+      let logIndex = 0;
+      function printNextLog() {
+        if (logIndex < logs.length) {
+          const log = logs[logIndex];
+          const div = document.createElement('div');
+          div.className = log.color;
+          div.textContent = log.text;
+          terminalContent.appendChild(div);
+          terminalContent.scrollTop = terminalContent.scrollHeight;
+          logIndex++;
+          setTimeout(printNextLog, 400 + Math.random() * 500); // realistic typing variability
+        } else {
+          simulationActive = false;
+          simulateBtn.disabled = false;
+          simulateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+      }
+
+      printNextLog();
+    });
+
+    function generateTxHash() {
+      const chars = '0123456789abcdef';
+      let result = '';
+      for (let i = 0; i < 40; i++) {
+        result += chars[Math.floor(Math.random() * 16)];
+      }
+      return result;
+    }
+
+    // Init calculations
+    updateCalculations();
+  </script>
+</body>
+</html>
