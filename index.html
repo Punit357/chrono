@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chronos Shards (CHRONO) | HACD Stack Asset</title>
+
+<style>
+:root{
+    --bg:#0b1020;
+    --bg2:#121a31;
+    --card:#18233f;
+    --text:#e9eefb;
+    --muted:#aab7d1;
+    --accent:#6ea8ff;
+    --border:#273554;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family: Inter, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.7;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(11,16,32,.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+}
+
+.nav-container{
+    max-width:1200px;
+    margin:auto;
+    padding:16px 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:1.2rem;
+    font-weight:700;
+}
+
+.logo span{
+    color:var(--accent);
+}
+
+.nav-links{
+    display:flex;
+    gap:20px;
+}
+
+.nav-links a{
+    color:var(--muted);
+    text-decoration:none;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.hero{
+    min-height:85vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:80px 24px;
+    background:
+        radial-gradient(circle at top, rgba(110,168,255,.18), transparent 45%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 14px;
+    border:1px solid var(--border);
+    border-radius:999px;
+    color:var(--accent);
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:4rem;
+    margin-bottom:20px;
+}
+
+.hero p{
+    color:var(--muted);
+    font-size:1.15rem;
+    max-width:760px;
+    margin:auto;
+}
+
+.buttons{
+    margin-top:35px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:14px 24px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.btn-primary{
+    background:var(--accent);
+    color:#08111f;
+}
+
+.btn-secondary{
+    border:1px solid var(--border);
+    color:white;
+}
+
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:90px 24px;
+}
+
+.section-title{
+    font-size:2.2rem;
+    margin-bottom:20px;
+}
+
+.section-subtitle{
+    color:var(--muted);
+    margin-bottom:40px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:24px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:24px;
+    border-radius:16px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:var(--muted);
+}
+
+.quote{
+    background:var(--card);
+    border-left:4px solid var(--accent);
+    padding:24px;
+    border-radius:10px;
+    margin-top:30px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:25px;
+}
+
+table th,
+table td{
+    padding:14px;
+    border:1px solid var(--border);
+    text-align:left;
+}
+
+table th{
+    background:var(--card);
+}
+
+.timeline{
+    display:grid;
+    gap:22px;
+}
+
+.phase{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:22px;
+}
+
+.phase h3{
+    color:var(--accent);
+    margin-bottom:10px;
+}
+
+ul{
+    margin-left:20px;
+}
+
+li{
+    margin-bottom:8px;
+}
+
+.notice{
+    margin-top:30px;
+    padding:20px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:rgba(110,168,255,.08);
+}
+
+.community{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.community a{
+    color:var(--accent);
+    text-decoration:none;
+}
+
+footer{
+    text-align:center;
+    padding:50px 24px;
+    border-top:1px solid var(--border);
+    color:var(--muted);
+}
+
+.small{
+    font-size:.9rem;
+    margin-top:15px;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:2.7rem;
+}
+
+.nav-links{
+    display:none;
+}
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="logo">Chronos <span>Shards</span></div>
+
+        <div class="nav-links">
+            <a href="#mission">Mission</a>
+            <a href="#formation">Formation</a>
+            <a href="#roadmap">Roadmap</a>
+            <a href="#community">Community</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            HACD Stack Asset Proposal
+        </div>
+
+        <h1>Chronos Shards (CHRONO)</h1>
+
+        <p>
+            A long-term network resource asset formed through HACD.
+            Rather than issuing tokens through arbitrary deployment,
+            Chronos Shards uses HACD containers and HAC formation costs
+            to create a transparent asset formation process with visible
+            on-chain history.
+        </p>
+
+        <div class="buttons">
+            <a href="#formation" class="btn btn-primary">
+                Explore Formation
+            </a>
+
+            <a href="#roadmap" class="btn btn-secondary">
+                View Roadmap
+            </a>
+        </div>
+
+        <div class="quote">
+            <strong>Bitcoin proved PoW for money.</strong><br>
+            HACD brings PoW to assets.<br><br>
+            CHRONO is formed through HACD containers, HAC stack costs,
+            and on-chain formation rules.
+        </div>
+
+    </div>
+
+</section>
+
+<section id="mission">
+
+    <h2 class="section-title">Mission</h2>
+
+    <p class="section-subtitle">
+        Chronos Shards explores how scarce network resources can be coordinated
+        using PoW-native asset formation.
+    </p>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Resource Coordination</h3>
+            <p>
+                Explore transparent allocation of compute capacity,
+                processing priority, and infrastructure access.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Formation First</h3>
+            <p>
+                Focus on asset formation and verifiable origin,
+                not arbitrary token deployment.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>On-Chain History</h3>
+            <p>
+                Every formation lot has an observable and verifiable
+                formation record.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="formation">
+
+    <h2 class="section-title">Genesis Formation</h2>
+
+    <p class="section-subtitle">
+        Every CHRONO formation lot follows identical public rules.
+    </p>
+
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+        </tr>
+
+        <tr>
+            <td>Total Supply</td>
+            <td>21,000,000 CHRONO</td>
+        </tr>
+
+        <tr>
+            <td>Total HACD Lots</td>
+            <td>1,000</td>
+        </tr>
+
+        <tr>
+            <td>HACD Per Lot</td>
+            <td>1 HACD</td>
+        </tr>
+
+        <tr>
+            <td>CHRONO Per Lot</td>
+            <td>21,000</td>
+        </tr>
+
+        <tr>
+            <td>Stack Cost</td>
+            <td>50 HAC</td>
+        </tr>
+
+        <tr>
+            <td>Access Type</td>
+            <td>Public HACD Holders</td>
+        </tr>
+    </table>
+
+    <div class="notice">
+        <strong>Formation Formula</strong><br><br>
+        Total Supply = 1,000 HACD Lots × 21,000 CHRONO<br>
+        = 21,000,000 CHRONO
+    </div>
+
+</section>
+
+<section>
+
+    <h2 class="section-title">Why HACD?</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>PoW Container</h3>
+            <p>
+                HACD serves as the formation container used
+                to create CHRONO lots.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Visible Formation Inputs</h3>
+            <p>
+                Every formation lot requires HACD, HAC stack cost,
+                and network transaction fees.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Transparent Origin</h3>
+            <p>
+                Formation events produce observable records
+                that can be independently verified on-chain.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <h2 class="section-title">Formation State Lifecycle</h2>
+
+    <div class="card">
+
+        <p>
+            Each Genesis Formation event creates a recorded association
+            between a HACD container and a CHRONO formation lot.
+        </p>
+
+        <br>
+
+        <p>
+            If a future protocol-defined unstack action is supported,
+            the associated CHRONO may become ineligible for utility
+            participation or may be removed from active circulation
+            according to the protocol rules in effect at that time.
+        </p>
+
+        <br>
+
+        <p>
+            Formation history remains part of the observable
+            on-chain record.
+        </p>
+
+    </div>
+
+</section>
+
+<section>
+
+    <h2 class="section-title">Planned Utility</h2>
+
+    <p class="section-subtitle">
+        Utility beyond formation depends on future development
+        and ecosystem adoption.
+    </p>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Compute Capacity Reservation</h3>
+        </div>
+
+        <div class="card">
+            <h3>Processing Priority Allocation</h3>
+        </div>
+
+        <div class="card">
+            <h3>Bandwidth Scheduling</h3>
+        </div>
+
+        <div class="card">
+            <h3>Service Access Coordination</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="roadmap">
+
+    <h2 class="section-title">Roadmap</h2>
+
+    <div class="timeline">
+
+        <div class="phase">
+            <h3>Phase 1 — Genesis Formation</h3>
+            <ul>
+                <li>Public HACD Stack formation</li>
+                <li>On-chain formation records</li>
+                <li>CHRONO distribution through HACD lots</li>
+            </ul>
+        </div>
+
+        <div class="phase">
+            <h3>Phase 2 — Infrastructure Research</h3>
+            <ul>
+                <li>Compute reservation framework design</li>
+                <li>Node operator feedback</li>
+                <li>Utility specification development</li>
+            </ul>
+        </div>
+
+        <div class="phase">
+            <h3>Phase 3 — Pilot Integrations</h3>
+            <ul>
+                <li>Early provider integrations</li>
+                <li>Resource allocation testing</li>
+                <li>Usage metrics review</li>
+            </ul>
+        </div>
+
+        <div class="phase">
+            <h3>Phase 4 — Ecosystem Expansion</h3>
+            <ul>
+                <li>Developer tooling</li>
+                <li>Additional service integrations</li>
+                <li>Community proposals</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="notice">
+        Roadmap items represent project goals and remain subject
+        to development progress, technical review, and ecosystem adoption.
+    </div>
+
+</section>
+
+<section id="community">
+
+    <h2 class="section-title">Community & Links</h2>
+
+    <div class="community">
+
+        <div class="card">
+            <h3>Website</h3>
+            <a href="https://chrono-jade-nu.vercel.app/">https://chronos-shards.org</a>
+        </div>
+
+        <div class="card">
+            <h3>X</h3>
+            <a href="#">https://x.com/chronoshards</a>
+        </div>
+
+        <div class="card">
+            <h3>GitHub</h3>
+            <a href="https://github.com/Punit357/chrono">https://github.com/chronos-shards</a>
+        </div>
+
+        <div class="card">
+            <h3>Documentation</h3>
+            <a href="#">https://docs.chronos-shards.org</a>
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <h2 class="section-title">Risk Disclosure</h2>
+
+    <div class="card">
+
+        <p>
+            Participation involves experimental protocol mechanisms,
+            irreversible blockchain transactions, network fees,
+            and software-related risks.
+        </p>
+
+        <br>
+
+        <p>
+            Planned utility features may not be available at launch
+            and depend on future development and ecosystem adoption.
+        </p>
+
+        <br>
+
+        <p>
+            No profit, market value, liquidity, listing,
+            or infrastructure integration is guaranteed.
+        </p>
+
+        <br>
+
+        <p>
+            This material is provided for informational purposes only
+            and is not financial advice.
+        </p>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <strong>Chronos Shards (CHRONO)</strong><br>
+
+    HACD Stack Asset Proposal
+
+    <div class="small">
+        Draft issuance package for review.<br>
+        Final parameters must be confirmed by the issuer and HACD Labs
+        before Launchpad publication.
+    </div>
+
+</footer>
+
+</body>
+</html>
