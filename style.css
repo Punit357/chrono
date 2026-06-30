@@ -139,6 +139,15 @@ section{
     margin-bottom:20px;
 }
 
+.sect{
+     font-size:2.2rem;
+    margin-bottom:20px;
+}
+
+.sect2{
+    margin-top:20px
+}
+
 .section-subtitle{
     color:var(--muted);
     margin-bottom:40px;
